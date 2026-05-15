@@ -1,3 +1,13 @@
+import { MarketDataFeed } from "@/components/MarketDataFeed";
+import { MarketChart } from "@/components/MarketChart";
+import { OrderBookHeatmap } from "@/components/OrderBookHeatmap";
+import { SignalPanel } from "@/components/SignalPanel";
+import { StrategyPanel } from "@/components/StrategyPanel";
+import { MonteCarloPanel } from "@/components/MonteCarloPanel";
+import { BacktestPanel } from "@/components/BacktestPanel";
+import { PaperTradingPanel } from "@/components/PaperTradingPanel";
+import { SystemStatusPanel } from "@/components/SystemStatusPanel";
+import { ExecutionHistory } from "@/components/ExecutionHistory";
 import { TerminalLogs } from "@/components/TerminalLogs";
 import { PNLCounter } from "@/components/PNLCounter";
 import { MonteCarloSim } from "@/components/MonteCarloSim";
@@ -11,6 +21,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="min-h-screen selection:bg-terminal-green selection:text-black">
+      <MarketDataFeed />
       {/* Navigation */}
       <nav className="sticky top-0 z-50 border-b terminal-border bg-background/80 backdrop-blur-md px-4 py-3 flex justify-between items-center">
         <div className="flex items-center gap-2">
@@ -71,6 +82,36 @@ export default function Home() {
               <div className="text-[10px] uppercase tracking-[0.2em] opacity-60 mb-2">Matrix_Realtime_Feeds</div>
               <LiveMarketTable />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-background py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid gap-6 lg:grid-cols-[1.55fr_0.95fr]">
+            <div className="space-y-6">
+              <TerminalLogs />
+              <MarketChart />
+            </div>
+            <div className="space-y-6">
+              <OrderBookHeatmap />
+              <SystemStatusPanel />
+              <ExecutionHistory />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-background py-20 px-4">
+        <div className="max-w-7xl mx-auto space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.9fr_0.9fr] gap-6">
+            <MonteCarloPanel />
+            <SignalPanel />
+            <StrategyPanel />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <BacktestPanel />
+            <PaperTradingPanel />
           </div>
         </div>
       </section>
